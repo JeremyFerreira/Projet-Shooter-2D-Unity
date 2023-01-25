@@ -10,7 +10,6 @@ public class InputSO : ScriptableObject
 {
     public event Action<Vector2> OnMoveChanged;
     public event Action<Vector2> OnLookChanged;
-
     public event Action<Vector2> OnLookGamePadChanged;
     public event Action<bool> OnShootActive;
     public event Action<bool> OnInventoryActive;

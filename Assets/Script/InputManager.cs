@@ -36,8 +36,9 @@ public class InputManager : MonoBehaviour
     {
         DisableGameInput();
     }
-    void EnableGameInput()
+    public void EnableGameInput()
     {
+        Debug.Log("fiout");
         _input.InGame.Enable();
 
         _input.InGame.Look.performed += context => _inputSO.OnLook(_input.InGame.Look.ReadValue<Vector2>());

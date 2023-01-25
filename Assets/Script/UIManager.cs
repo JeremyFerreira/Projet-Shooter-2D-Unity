@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _gameOverUI;
     [SerializeField] TextMeshProUGUI _score;
     [SerializeField] Score _scoreSO;
+    [SerializeField] InputManager _inputManager;
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -27,12 +29,6 @@ public class UIManager : MonoBehaviour
         _scoreSO._score = 0;
         UpdateScore();
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void GameOver()
     {
         Time.timeScale = 0f;
@@ -41,5 +37,10 @@ public class UIManager : MonoBehaviour
     void UpdateScore()
     {
         _score.text = _scoreSO._score.ToString() + " points";
+    }
+    public void Reload()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
     }
 }
