@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     int maxLife;
     [SerializeField] Slider healthSlider;
     [SerializeField] Score score;
+    [SerializeField] GameObject particuleDeath;
 
     private void OnEnable()
     {
@@ -19,7 +20,7 @@ public class EnemyHealth : MonoBehaviour
         if (collision.gameObject.layer == 6)
         {
             UpdateHealth(collision.GetComponent<BulletStats>().damage);
-            
+            Instantiate(particuleDeath, transform.position, Quaternion.identity).transform.up = collision.GetComponent<Rigidbody2D>().velocity;
             Destroy(collision.gameObject);
         }
     }
@@ -36,6 +37,8 @@ public class EnemyHealth : MonoBehaviour
     }
     void Death()
     {
+        
         Destroy(gameObject);
+        
     }
 }

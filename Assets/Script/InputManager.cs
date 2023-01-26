@@ -11,22 +11,12 @@ using static UnityEditor.PlayerSettings;
 
 public class InputManager : MonoBehaviour
 {
-    public static Input _input { private set; get; }
-    public static InputManager Instance;
+    public Input _input { private set; get; }
     [SerializeField] PlayerInput playerInput;
     [SerializeField] InputSO _inputSO;
     void Awake()
     {
-        if (Instance == null)
-        {
-            _input = new Input();
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        _input = new Input();
     }
     private void OnEnable()
     {
@@ -38,7 +28,6 @@ public class InputManager : MonoBehaviour
     }
     public void EnableGameInput()
     {
-        Debug.Log("fiout");
         _input.InGame.Enable();
 
         _input.InGame.Look.performed += context => _inputSO.OnLook(_input.InGame.Look.ReadValue<Vector2>());

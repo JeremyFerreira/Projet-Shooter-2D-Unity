@@ -52,7 +52,7 @@ public class WeaponManager : MonoBehaviour
         {
              GameObject bullet = Instantiate(currentweaponData.bullet, currentWeaponObject.transform.GetChild(0).transform.position, Quaternion.identity);
              bullet.GetComponent<Rigidbody2D>().velocity = currentweaponData.bulletSpeed * transform.up;
-            bullet.GetComponent<BulletStats>().damage = currentweaponData.damage;
+             bullet.GetComponent<BulletStats>().damage = currentweaponData.damage;
              reloadTime = currentweaponData.reloadTime;
         }
         

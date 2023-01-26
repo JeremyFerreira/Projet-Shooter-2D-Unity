@@ -9,10 +9,12 @@ public class playerLife : MonoBehaviour
     int lifeMax;
     [SerializeField] Slider _lifeSlider;
     [SerializeField] EventSO _gameOver;
+    [SerializeField] Animator _animator;
 
     private void Awake()
     {
         lifeMax = _life;
+        _animator = GetComponent<Animator>();
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,5 +33,6 @@ public class playerLife : MonoBehaviour
     {
         _life += value;
         _lifeSlider.value = (float)_life / (float)lifeMax;
+        _animator.CrossFade("PlayerHit", 0);
     }
 }

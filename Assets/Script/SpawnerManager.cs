@@ -9,7 +9,7 @@ public class SpawnerManager : MonoBehaviour
     float timeSpawnEnemie;
     [SerializeField] float _timeBetweenSpawnPowerUp;
     float resetTimeSpawnPowerUp;
-    [SerializeField] GameObject _enemy;
+    [SerializeField] GameObject[] _enemy;
     [SerializeField] GameObject _PowerUp;
     float _cameraWidth;
     float _cameraHeight;
@@ -41,7 +41,8 @@ public class SpawnerManager : MonoBehaviour
         if (_timeBetweenSpawnEnemie <= 0)
         {
             Vector3 RandomPos = RandomPosInCameraView();
-            Instantiate(_enemy, RandomPos, Quaternion.identity);
+            int randomEnemy = Random.Range(0, _enemy.Length);
+            Instantiate(_enemy[randomEnemy], RandomPos, Quaternion.identity);
             _timeBetweenSpawnEnemie = _difficultyCurve.Evaluate(timeSpawnEnemie / _timeForMaxDifficulty) * resetTimeSpawnEnemie;
         }
     }

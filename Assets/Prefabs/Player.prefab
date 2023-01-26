@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 256269213316636598}
   - component: {fileID: 256269213316636585}
   - component: {fileID: 256269213316636584}
+  - component: {fileID: 7655506837404790968}
   m_Layer: 3
   m_Name: PlayerObject
   m_TagString: Untagged
@@ -254,6 +255,26 @@ MonoBehaviour:
   _life: 5
   _lifeSlider: {fileID: 3793606525652151735}
   _gameOver: {fileID: 11400000, guid: 83cebb20585180a4f9860e2baad23614, type: 2}
+--- !u!95 &7655506837404790968
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256269213316636594}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2d42a888e8e456f4abdabfc5d587173d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &256269213489783446
 GameObject:
   m_ObjectHideFlags: 0
