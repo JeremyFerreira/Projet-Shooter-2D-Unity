@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30058702e5a8a1f4f811766fac3d2a9b, type: 3}
+  m_Name: FusilAPompe
+  m_EditorClassIdentifier: 
+  reloadTime: 0.5
+  bulletSpeed: 20
+  damage: 70
+  bullet: {fileID: 6048737413628732037, guid: d011c1136d9be084bb7af54204f8fa94, type: 3}
+  weaponPrefab: {fileID: 7884910719246718227, guid: dfcef58b8a4ef654e8b9fb4a4b61ac20, type: 3}
+  buttonPrefab: {fileID: 6341950306673684801, guid: 1c82b9de6c5caf146bdd84bf90c3b898, type: 3}
+  buttonInstance: {fileID: 0}
