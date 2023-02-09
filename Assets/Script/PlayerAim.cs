@@ -30,7 +30,7 @@ public class PlayerAim : MonoBehaviour
         _inputSO.OnLookChanged -= MylookInput;
         _inputSO.OnLookGamePadChanged -= MylookGamePadInput;
     }
-
+    
     private void Update()
     {
         Look();
