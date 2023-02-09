@@ -13,7 +13,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] PlayerInventory inventory;
     [SerializeField] EventSO switchWeaponEvent;
     [SerializeField] Transform weaponParent;
-    [SerializeField] GameObject currentWeaponObject;
+    GameObject currentWeaponObject;
     private void Awake()
     {
         inventory.weapons.Clear();

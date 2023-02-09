@@ -16,11 +16,13 @@ public class EnemyController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        //only move when the ennemy has finished spawn animation.
         if(isAttacking)
         {
             rb.velocity = (_playerRefernceSO.player.transform.position-transform.position).normalized * speed;
         }
     }
+    //is called by event in animation
     public void AttackPlayer()
     {
         isAttacking = true;

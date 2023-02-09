@@ -80,6 +80,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectWeapon"",
+                    ""type"": ""Value"",
+                    ""id"": ""492339b7-dad0-465a-aab0-a2a16f1562c6"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -236,6 +245,28 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""action"": ""LookGamepad"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c4ebd54-486f-407f-aae4-9e73d38965b6"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bdfdfaaa-2e88-4732-8483-bfeb82624831"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -250,6 +281,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_InGame_Pause = m_InGame.FindAction("Pause", throwIfNotFound: true);
         m_InGame_Shoot = m_InGame.FindAction("Shoot", throwIfNotFound: true);
         m_InGame_OpenInventory = m_InGame.FindAction("OpenInventory", throwIfNotFound: true);
+        m_InGame_SelectWeapon = m_InGame.FindAction("SelectWeapon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +347,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_Pause;
     private readonly InputAction m_InGame_Shoot;
     private readonly InputAction m_InGame_OpenInventory;
+    private readonly InputAction m_InGame_SelectWeapon;
     public struct InGameActions
     {
         private @Input m_Wrapper;
@@ -325,6 +358,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_InGame_Pause;
         public InputAction @Shoot => m_Wrapper.m_InGame_Shoot;
         public InputAction @OpenInventory => m_Wrapper.m_InGame_OpenInventory;
+        public InputAction @SelectWeapon => m_Wrapper.m_InGame_SelectWeapon;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -352,6 +386,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @OpenInventory.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnOpenInventory;
                 @OpenInventory.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnOpenInventory;
                 @OpenInventory.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnOpenInventory;
+                @SelectWeapon.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnSelectWeapon;
+                @SelectWeapon.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnSelectWeapon;
+                @SelectWeapon.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnSelectWeapon;
             }
             m_Wrapper.m_InGameActionsCallbackInterface = instance;
             if (instance != null)
@@ -374,6 +411,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @OpenInventory.started += instance.OnOpenInventory;
                 @OpenInventory.performed += instance.OnOpenInventory;
                 @OpenInventory.canceled += instance.OnOpenInventory;
+                @SelectWeapon.started += instance.OnSelectWeapon;
+                @SelectWeapon.performed += instance.OnSelectWeapon;
+                @SelectWeapon.canceled += instance.OnSelectWeapon;
             }
         }
     }
@@ -386,5 +426,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnOpenInventory(InputAction.CallbackContext context);
+        void OnSelectWeapon(InputAction.CallbackContext context);
     }
 }

@@ -5,52 +5,43 @@ using UnityEngine;
 
 public class PointeurToWeapon : MonoBehaviour
 {
-    [SerializeField]
-    GameObject weaponPosition;
-
-    float baseDistanceValue;
-
-    float ArrowScale;
-    
-    float distance;
-
-    [SerializeField]
-    float closeScale;
-
-    [SerializeField]
-    float farScale;
+    [SerializeField] private GameObject _weaponPosition;
+    private float _baseDistanceValue;
+    private float _arrowScale;
+    private float _distance;
+    [SerializeField] private float _closeScale;
+    [SerializeField] private float _farScale;
 
     private void Start()
     {
-        baseDistanceValue = Vector2.Distance((Vector2)weaponPosition.transform.position, (Vector2)transform.position);
+        _baseDistanceValue = Vector2.Distance((Vector2)_weaponPosition.transform.position, (Vector2)transform.position);
     }
 
     private void Update()
     {
-        if(weaponPosition == null)
+        if(_weaponPosition == null)
         {
             Destroy(gameObject);
         }
         else
         {
             LookToWeapon();
-
             NearObject();
         }
     }
 
     void LookToWeapon()
     {
-        Vector2 direction = ((Vector2)weaponPosition.transform.position - (Vector2)transform.position);
+        Vector2 direction = ((Vector2)_weaponPosition.transform.position - (Vector2)transform.position);
         transform.up = direction;
     }
 
     void NearObject()
     {
-        distance = Vector2.Distance((Vector2)weaponPosition.transform.position, (Vector2)transform.position) / baseDistanceValue;
+        _distance = Vector2.Distance((Vector2)_weaponPosition.transform.position, (Vector2)transform.position) / _baseDistanceValue;
 
-        ArrowScale = Mathf.Lerp(closeScale, farScale, distance);
+        _arrowScale = Mathf.Lerp(_closeScale, _farScale, _distance);
 
-        transform.GetChild(0).localScale = new Vector3(ArrowScale, ArrowScale, ArrowScale);
+        transform.GetChild(0).localScale = new Vector3(_arrowScale, _arrowScale, _arrowScale);
     }
 }

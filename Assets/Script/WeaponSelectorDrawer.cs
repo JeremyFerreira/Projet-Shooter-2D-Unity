@@ -13,22 +13,21 @@ public class WeaponSelectorDrawer : MonoBehaviour
     [SerializeField] InputSO _inputSO;
     [SerializeField] Transform _IndicatorJoystick;
     float TAU = Mathf.PI * 2;
-    
-    [SerializeField] GameObject seperateButtonsLine;
 
     private void OnEnable()
     {
         _inputSO.OnInventoryActive += PlaceButtonsInCircle;
-        _inputSO.OnMoveChanged += SelectButtonGamepad;
+        _inputSO.OnSelectWeaponChanged += SelectButtonGamepad;
     }
     private void OnDisable()
     {
         _inputSO.OnInventoryActive -= PlaceButtonsInCircle;
-        _inputSO.OnMoveChanged -= SelectButtonGamepad;
+        _inputSO.OnSelectWeaponChanged -= SelectButtonGamepad;
     }
     public void PlaceButtonsInCircle(bool value)
     {
-        _IndicatorJoystick.gameObject.SetActive(_inputSO._isInputManette);
+        _IndicatorJoystick.gameObject.SetActive(_inputSO._isInputGamepad);
+
         if (value)
         {
             
@@ -42,7 +41,8 @@ public class WeaponSelectorDrawer : MonoBehaviour
         }
         else
         {
-            if(_inputSO._isInputManette)
+            //Switch weapon on gamepad Input
+            if(_inputSO._isInputGamepad)
             {
                 List<Vector3> buttonDirections = new List<Vector3>();
                 for (int i = 0; i < inventory.weapons.Count; i++)
@@ -58,6 +58,8 @@ public class WeaponSelectorDrawer : MonoBehaviour
     {
         _IndicatorJoystick.up = direction;
     }
+
+    //find the button that has the closest dot product to 1 (the biggest) between the joystick direction and the button direction from the origin.
     GameObject FindBiggestDot(List<Vector3> directions)
     {
         GameObject biggestDotGameObject = inventory.weapons[0].buttonInstance;

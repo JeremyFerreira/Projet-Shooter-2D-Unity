@@ -45,7 +45,7 @@ public class PowerUp : MonoBehaviour
     }
     void LifePowerUp(GameObject player)
     {
-        player.GetComponent<playerLife>().UpdateLife(1);
+        player.GetComponent<playerLife>().AddLife(1);
     }
     void ExplosionPowerUp(GameObject player)
     {

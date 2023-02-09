@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class playerLife : MonoBehaviour
+public class playerLife : MonoBehaviour, IDamageable
 {
     [SerializeField] int _life;
     int lifeMax;
     [SerializeField] Slider _lifeSlider;
     [SerializeField] EventSO _gameOver;
-    [SerializeField] Animator _animator;
+    Animator _animator;
 
     private void Awake()
     {
@@ -21,7 +22,7 @@ public class playerLife : MonoBehaviour
     {
         if(collision.gameObject.layer == 7)
         {
-            UpdateLife(-1);
+            TakeDamage(1);
             Destroy(collision.gameObject);
             if(_life < 0)
             {
@@ -29,10 +30,20 @@ public class playerLife : MonoBehaviour
             }
         }
     }
-    public void UpdateLife(int value)
+    public void AddLife(int value)
     {
         _life += value;
-        _lifeSlider.value = (float)_life / (float)lifeMax;
+        UpdateUILifeSlider();
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _life -= damage;
+        UpdateUILifeSlider();
         _animator.CrossFade("PlayerHit", 0);
+    }
+    void UpdateUILifeSlider()
+    {
+        _lifeSlider.value = (float)_life / (float)lifeMax;
     }
 }

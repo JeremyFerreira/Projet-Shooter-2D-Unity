@@ -11,9 +11,10 @@ public class InputSO : ScriptableObject
     public event Action<Vector2> OnMoveChanged;
     public event Action<Vector2> OnLookChanged;
     public event Action<Vector2> OnLookGamePadChanged;
+    public event Action<Vector2> OnSelectWeaponChanged;
     public event Action<bool> OnShootActive;
     public event Action<bool> OnInventoryActive;
-    public bool _isInputManette;
+    public bool _isInputGamepad;
     public void OnMove(Vector2 value)
     {
         OnMoveChanged?.Invoke(value);
@@ -25,6 +26,10 @@ public class InputSO : ScriptableObject
     public void OnLookGamePad(Vector2 value)
     {
         OnLookGamePadChanged?.Invoke(value);
+    }
+    public void OnSelectWeapon(Vector2 value)
+    {
+        OnSelectWeaponChanged?.Invoke(value);
     }
     public void OnShoot(bool value)
     {
