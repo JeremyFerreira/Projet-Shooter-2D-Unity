@@ -22,14 +22,19 @@ public class InputManager : MonoBehaviour
     {
         _input.InGame.Enable();
 
-        _input.InGame.Look.performed += context => _inputSO.OnLook(_input.InGame.Look.ReadValue<Vector2>());
-        _input.InGame.Look.canceled += context => _inputSO.OnLook(Vector2.zero);
+        
 
         _input.InGame.LookGamepad.performed += context => _inputSO.OnLookGamePad(_input.InGame.LookGamepad.ReadValue<Vector2>());
         _input.InGame.LookGamepad.canceled += context => _inputSO.OnLookGamePad(Vector2.zero);
 
         _input.InGame.Move.performed += context => _inputSO.OnMove(_input.InGame.Move.ReadValue<Vector2>());
         _input.InGame.Move.canceled += context => _inputSO.OnMove(Vector2.zero);
+
+        _input.InGame.Look.performed += context => _inputSO.OnLook(_input.InGame.Look.ReadValue<Vector2>());
+        _input.InGame.Look.canceled += context => _inputSO.OnLook(Vector2.zero);
+
+
+
 
         _input.InGame.Shoot.performed += context => _inputSO.OnShoot(true);
         _input.InGame.Shoot.canceled += context => _inputSO.OnShoot(false);

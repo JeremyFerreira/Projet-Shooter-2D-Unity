@@ -36,7 +36,7 @@ public class WeaponSelectorDrawer : MonoBehaviour
                 float angle = TAU * i / inventory.weapons.Count;
                 Vector3 circularPos = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0);
                 inventory.weapons[i].buttonInstance.transform.parent = buttonParent;
-                inventory.weapons[i].buttonInstance.transform.position = new Vector3(960, 540, 0) + circularPos * radius;
+                inventory.weapons[i].buttonInstance.transform.position = new Vector3(Screen.width/2, Screen.height/2, 0) + circularPos * radius;
             }
         }
         else
