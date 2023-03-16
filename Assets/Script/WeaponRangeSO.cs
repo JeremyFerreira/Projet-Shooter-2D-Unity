@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="weaponRangeSO", menuName = "weapon/weaponRangeSO", order = 2)]
 public class WeaponRangeSO : ScriptableObject
 {
+    public int id;
     public float reloadTime;
     public float bulletSpeed;
     public int damage;

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30058702e5a8a1f4f811766fac3d2a9b, type: 3}
   m_Name: FusilAPompe
   m_EditorClassIdentifier: 
+  id: 1
   reloadTime: 0.5
   bulletSpeed: 20
   damage: 70
