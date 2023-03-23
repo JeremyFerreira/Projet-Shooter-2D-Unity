@@ -6,4 +6,5 @@ using UnityEngine;
 public class PlayerInventory : ScriptableObject
 {
     public List<WeaponRangeSO> weapons;
+    
 }
